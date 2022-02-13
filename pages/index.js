@@ -21,7 +21,6 @@ class CampaignIndex extends Component {
                 header: address,
                 description: (
                     <Link 
-                        as={`/campaigns/${address}`}
                         href={{
                             pathname: `/campaigns/show/`,
                             query: { address }
