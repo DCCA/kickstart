@@ -16,13 +16,8 @@ const ContributeForm = (address) => {
         setLoading(true);
         setErrorMessage('')
         //get data
-        try {
-            const campaign = Campaign(address.address);
-            makeContribution(campaign);
-        } catch (err){
-            console.log(err);
-            setErrorMessage(err.message);
-        }
+        const campaign = Campaign(address.address);
+        makeContribution(campaign);
         //stop loadings
         setLoading(false);
         setValue('0');

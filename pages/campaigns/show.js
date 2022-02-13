@@ -2,9 +2,10 @@ import React, { Component, useEffect, useState } from "react";
 import {useRouter} from "next/router";
 import Layout from "../../components/Layout";
 import Campaign from "../../ethereum/campaign";
-import { CardGroup, Grid, GridColumn } from "semantic-ui-react";
+import { Button, CardGroup, Grid, GridColumn } from "semantic-ui-react";
 import web3 from "../../ethereum/web3";
 import ContributeForm from "../../components/ContributeForm";
+import Link from "next/link";
 
 const CampaignShow = () => {
     const router = useRouter();
@@ -71,12 +72,25 @@ const CampaignShow = () => {
         <Layout>
             <h3>Campaign:</h3>
             <Grid>
-                <Grid.Column width={10}>
-                    <CardGroup items={items}></CardGroup>
-                </Grid.Column>
-                <GridColumn width={6}>
-                    <ContributeForm address={summary.address} ></ContributeForm>
-                </GridColumn>
+                <Grid.Row>
+                    <Grid.Column width={10}>
+                        <CardGroup items={items}></CardGroup>
+                    </Grid.Column>
+                    <GridColumn width={6}>
+                        <ContributeForm address={summary.address} ></ContributeForm>
+                    </GridColumn>
+                </Grid.Row>
+                <Grid.Row>
+                    <Grid.Column>
+                        <Link                        
+                            href={{
+                                pathname: `/campaigns/requests/`,
+                                query: { address }
+                            }}>
+                            <Button primary >View Requests</Button>
+                        </Link>
+                    </Grid.Column>
+                </Grid.Row>
             </Grid>
         </Layout>
         )
