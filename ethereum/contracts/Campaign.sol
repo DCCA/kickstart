@@ -60,6 +60,9 @@ contract Campaign {
         //check if the value is bigger then minimum
         require(msg.value > minimumContribution);
         //add the value to the approvers mapping
+        //check if the address has already contributed
+        require(approvers[msg.sender] == false);
+        //CHECK IF IS ALREADY IN APPROVERS
         approvers[msg.sender] = true;
         approversCount++;
     }
